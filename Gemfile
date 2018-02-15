@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
+gem 'rack-cors', '~> 0.3.1'
 
 group :development, :test do
   gem 'pry-meta'

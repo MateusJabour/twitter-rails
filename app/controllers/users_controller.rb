@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
   skip_before_action :authorize_request, only: :create
 
-  def index
-    @users = User.all.select(:id, :first_name, :last_name, :username, :email)
+  def getAll
+    @users = User.all.clean.index_by(&:id)
     json_response(@users)
+  end
+
+  def getOne
+    @user = User.clean.where(id: params[:id]).first
+    json_response(@user)
   end
 
   def create

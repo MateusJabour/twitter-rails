@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
-  get 'tweets', to: 'tweets#index'
-  post 'tweets', to: 'tweets#create'
-
   post 'auth/login', to: 'authentication#authenticate'
 
-  get 'users', to: 'users#index'
-  post 'signup', to: 'users#create'
+  get 'tweets', to: 'tweets#getAll'
+  post 'tweets', to: 'tweets#create'
+  post 'tweet/:id/delete', to: 'tweets#delete'
+
+  get 'users', to: 'users#getAll'
+  post 'users', to: 'users#create'
+  get 'user/:id', to: 'users#getOne'
+
+  get 'relationships', to: 'relationships#getAll'
+  post 'follow/:id', to: 'relationships#follow'
+  post 'unfollow/:id', to: 'relationships#unfollow'
 end

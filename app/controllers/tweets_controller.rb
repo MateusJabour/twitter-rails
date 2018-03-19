@@ -1,7 +1,12 @@
 class TweetsController < ApplicationController
-  def getAll
+  def getAllTweets
     id_list = current_user.followings.ids << current_user.id
     tweets = Tweet.where(user_id: id_list).order('created_at DESC')
+    json_response(tweets)
+  end
+
+  def getUserTweets
+    tweets = Tweet.where(user_id: params[:user_id]).order('created_at DESC')
     json_response(tweets)
   end
 
